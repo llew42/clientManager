@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "ckfrontend": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ckfrontend"
+    }
+  },
+  "defaultProject": "ckfrontend",
+  "cli": {
+    "analytics": "57da9204-2590-44f0-aa23-ad6ee2b351b0"
+  }
 }
