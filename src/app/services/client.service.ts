@@ -5,26 +5,23 @@ import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
 export class ClientService {
-
-  // httpOptions = {
-  //   header: new HttpHeaders({'Content-Type': 'application/json'}),
-  // };
+  private apiUrl = 'http://localhost:3000/api/clients';
 
   constructor(private http: HttpClient){ }
 
   getClients(){
-    return this.http.get('http://localhost:3000/api/clients')
+    return this.http.get(`${this.apiUrl}`)
   }
 
   saveClient(client){
-    return this.http.post('http://localhost:3000/api/clients', client);
+    return this.http.post(`${this.apiUrl}`, client);
   }
 
   updateClient(client){
-    return this.http.put(`http://localhost:3000/api/clients/${client._id}`, client);
+    return this.http.put(`${this.apiUrl}/${client._id}`, client);
   }
 
   deleteClient(id){
-    return this.http.delete(`http://localhost:3000/api/clients/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
