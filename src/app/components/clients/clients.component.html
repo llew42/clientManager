@@ -1,3 +1,49 @@
+<div class="client-form">
+  <div *ngIf="isEdit">
+    <form (ngSubmit)="onEditSubmit()" method="post">
+      <h3>Edit Client</h3>
+      <div class="form-group list-group-item list-group-item-warning">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName" />
+      </div>
+      <div class="form-group list-group-item list-group-item-warning">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName" />
+      </div>
+      <div class="form-group list-group-item list-group-item-warning">
+        <label for="firstName">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" />
+      </div>
+      <div class="form-group list-group-item list-group-item-warning">
+        <label for="firstName">Phone</label>
+        <input type="text" class="form-control" [(ngModel)]="phone" name="phone" />
+      </div>
+      <button class="btn btn-outline-dark" type="submit">Edit Client</button>
+    </form>
+  </div>
+  <div *ngIf="!isEdit">
+    <form (ngSubmit)="onAddSubmit()" method="post">
+      <h3>Add Client</h3>
+      <div class="form-group list-group-item list-group-item-info">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName" placeholder="Enter first name" />
+      </div>
+      <div class="form-group list-group-item list-group-item-info">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName" placeholder="Enter last name" />
+      </div>
+      <div class="form-group list-group-item list-group-item-info">
+        <label for="firstName">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Enter email" />
+      </div>
+      <div class="form-group list-group-item list-group-item-info">
+        <label for="firstName">Phone</label>
+        <input type="text" class="form-control" [(ngModel)]="phone" name="phone" placeholder="Enter phone number" />
+      </div>
+      <button class="btn btn-outline-dark" type="submit">Add Client</button>
+    </form>
+  </div>
+</div>
 <div class="client-list">
   <table class="table table-stripped">
     <tr>
@@ -13,8 +59,8 @@
       <td>{{client.lastName}}</td>
       <td>{{client.email}}</td>
       <td>{{client.phone}}</td>
-      <td><a href="" class="btn btn-primary">Edit</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
+      <td><a (click)="onEdit(client)" href="#" class="btn btn-primary">Edit</a></td>
+      <td><a (click)="onDelete(client._id)" href="#" class="btn btn-danger">Delete</a></td>
     </tr>
   </table>
 </div>
