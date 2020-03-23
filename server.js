@@ -23,7 +23,7 @@ app.use((req, res, next) => {
    // Request methods you wish to allow
    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
    // Request headers you wish to allow
-   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Origin');
    // Pass to next layer of middleware
    next();
 });
@@ -44,6 +44,7 @@ app.get('/api/clients', (req, res, next) => {
 
 // Add CLient - POST
 app.post('/api/clients', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
   db.clients.insert(req.body, (err, client) => {
     if(err){
       res.send(err);
@@ -58,8 +59,8 @@ app.put('/api/clients/:id', (req, res, next) => {
   db.clients.findAndModify({query: {_id: mongojs.ObjectId(id)},
     update: {
       $set: {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         phone: req.body.phone
       }},
